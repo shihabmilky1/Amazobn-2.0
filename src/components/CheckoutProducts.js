@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Currency from 'react-currency-formatter'
 import { useDispatch } from 'react-redux'
 import { addToBasket, removeFromBasket } from '../slices/basketSlice'
+import toast from 'react-hot-toast';
 
 function CheckoutProducts({
     id,
@@ -25,10 +26,10 @@ function CheckoutProducts({
             rating,
             hasPrime
         }
-        dispatch(addToBasket(product))
+        dispatch(addToBasket(product), toast.success('Successfully toasted!'))
     }
     const removeItemFromBasket = () => {
-        dispatch(removeFromBasket({ id }))
+        dispatch(removeFromBasket({ id }), toast.success('Successfully toasted!'))
     }
     return (
         <div className="grid grid-cols-5">
